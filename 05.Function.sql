@@ -88,9 +88,17 @@ FROM
 -- SQL에서 0으로 수치를 나누면 무슨일이 벌어지는지 보겠습니다.
 SELECT 3/0;
 
-
-
-
+SELECT * FROM user_tbl;
+-- user_tbl의 회원들 중 년도 기준으로
+-- 1993년 이전 출생자는 고연령, 1997년 이전 출생자는 중위연령, 나머지는 저연령
+SELECT
+	user_name, user_birth_year,
+	CASE
+		WHEN user_birth_year  < 1993 THEN '고연령'
+        WHEN user_birth_year < 1997 THEN '중위연령'
+        ELSE '저연령'
+	END AS 연령분류
+FROM user_tbl;
 
 
 
